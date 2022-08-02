@@ -15,8 +15,10 @@ app.get("/test", (req, res) => {
 });
 
 const productRoutes = require("./routes/product.route");
+const uploadImgRoutes = require("./routes/uploadImage.route");
 
-app.use("/product", productRoutes);
+app.use("/api/product", productRoutes);
+app.use("/api/cloudinary", uploadImgRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

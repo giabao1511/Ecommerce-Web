@@ -1,0 +1,8 @@
+POST http://localhost:5000/api/cloudinary/upload
+
+### delete img
+POST http://localhost:5000/api/cloudinary/upload
+
+{
+    "public_id": "web-ecommerce/znbypvkwaevjtfkmubck"
+}
