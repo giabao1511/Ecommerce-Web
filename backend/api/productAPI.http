@@ -1,0 +1,37 @@
+POST http://localhost:5000/product/create
+Content-Type: application/json
+
+{
+    "title": "Ao so mi 1",
+    "price": "150000",
+    "image01": "image01", 
+    "image02": "image02",
+    "categorySlug": "ao-so-mi",
+    "color": ["red", "blue"], 
+    "slug": "ao-so-mi-1",
+    "size": ["s"],
+    "description": "Ao dep" 
+}
+
+
+### Get all products
+GET http://localhost:5000/product/all
+Content-Type: application/json
+
+### Update product
+POST http://localhost:5000/product/edit/62e881fa94ecb150a8411536
+Content-Type: application/json
+
+{
+ "title": "Ao so mi 4", 
+ "slug": "ao-so-mi-4"   
+}
+
+### Get detail product
+GET http://localhost:5000/product/detail/62e881fa94ecb150a8411536
+Content-Type: application/json
+
+### Delete product
+DELETE  http://localhost:5000/product/delete/62e882a194ecb150a8411544
+Content-Type: application/json
+
