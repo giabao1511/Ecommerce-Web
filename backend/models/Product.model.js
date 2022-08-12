@@ -26,7 +26,7 @@ const ProductSchema = mongoose.Schema({
     require: true,
     trim: true,
   },
-  color: {
+  colors: {
     type: [String],
     require: true,
   },

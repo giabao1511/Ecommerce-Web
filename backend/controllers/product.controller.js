@@ -4,6 +4,7 @@ const {
   serviceUpdate,
   serviceGetDetail,
   serviceDelete,
+  serviceUpload,
 } = require("../services/product.service");
 
 const productCtrl = {
@@ -23,25 +24,22 @@ const productCtrl = {
   },
   createProduct: async (req, res) => {
     try {
-      const {
-        title,
-        price,
-        image01,
-        image02,
-        categorySlug,
-        color,
-        slug,
-        size,
-        description,
-      } = req.body;
+      const { title, price, categorySlug, colors, slug, size, description } =
+        req.body;
+
+      const { image01, image02 } = req.files;
+
+      const imagesArr = [...image01, ...image02];
+
+      const { image01_data, image02_data } = await serviceUpload(imagesArr);
 
       const { code, message, element } = await serviceCreate({
         title,
         price,
-        image01,
-        image02,
+        image01: image01_data.url,
+        image02: image02_data.url,
         categorySlug,
-        color,
+        colors,
         slug,
         size,
         description,
@@ -52,9 +50,8 @@ const productCtrl = {
         element,
       });
     } catch (error) {
-      return res.status(code).json({
-        error,
-        message,
+      return res.status(406).json({
+        error: error,
       });
     }
   },
@@ -66,7 +63,7 @@ const productCtrl = {
         image01,
         image02,
         categorySlug,
-        color,
+        colors,
         slug,
         size,
         description,
@@ -81,7 +78,7 @@ const productCtrl = {
         image01,
         image02,
         categorySlug,
-        color,
+        colors,
         slug,
         size,
         description,

@@ -1,15 +1,8 @@
 import React from 'react'
-import Helmet from '../components/Helmet'
-import HeroSlider from '../components/HeroSlider'
-import sliderData from '../assets/fake-data/hero-slider'
-import Section, { SectionBody, SectionTitle } from '../components/Section'
-import policy from "../assets/fake-data/policy"
-import PolicyCard from '../components/PolicyCard'
-import Grid from '../components/Grid'
+import Section, { SectionBody, SectionTitle } from '../../components/Customer/Section'
 import { Link } from "react-router-dom"
-import productData from "../assets/fake-data/products"
-import ProductCard from '../components/ProductCard'
-import banner from "../assets/images/banner.png"
+import { banner, policy, sliderData, productData } from "../../imports/assets"
+import { Grid, PolicyCard, HeroSlider, Helmet, ProductCard } from "../../imports/index"
 
 const Home = () => {
   return (

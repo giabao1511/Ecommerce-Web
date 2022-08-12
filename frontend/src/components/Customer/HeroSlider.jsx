@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import Button from './Button';
+import { Button } from '../../imports/index';
 
 const HeroSlider = (props) => {
     const [activeSlide, setActiveSlide] = useState(0);

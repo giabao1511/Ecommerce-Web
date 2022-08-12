@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import productData from '../assets/fake-data/products'
-import Button from '../components/Button'
-import Helmet from "../components/Helmet"
-import numberWithCommas from '../utils/numberWithCommas'
 import { Link } from "react-router-dom"
-import CartItem from '../components/CartItem'
+import { CartItem, Helmet, numberWithCommas, Button } from "../../imports/index"
+import { productData } from "../../imports/assets"
 
 const Cart = () => {
   const cartItems = useSelector(state => state.cart.value)

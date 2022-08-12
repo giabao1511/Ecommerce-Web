@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react'
-import Helmet from "../components/Helmet"
-import Grid from "../components/Grid"
-import productData from "../assets/fake-data/products"
-import Section, { SectionBody, SectionTitle } from "../components/Section"
+import Section, { SectionBody, SectionTitle } from "../../components/Customer/Section"
 import { useParams } from "react-router-dom"
-import ProductCard from '../components/ProductCard'
-import ProductView from '../components/ProductView'
+import { ProductCard, ProductView, Grid, Helmet } from "../../imports/index"
+import { productData } from "../../imports/assets"
 
 const Product = props => {
   const slug = useParams().slug;

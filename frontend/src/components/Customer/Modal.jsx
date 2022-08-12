@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import productData from '../assets/fake-data/products'
-import ProductView from "../components/ProductView"
-import Button from './Button'
+import { productData } from "../../imports/assets"
+import { ProductView, Button } from "../../imports/index"
 import { useDispatch, useSelector } from 'react-redux'
-import { remove } from '../redux/productModalSlice'
+import { remove } from '../../redux/productModalSlice'
 
 const Modal = () => {
     const dispatch = useDispatch();

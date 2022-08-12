@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import Button from './Button'
-import numberWithCommas from '../utils/numberWithCommas'
+import { Button, numberWithCommas } from "../../imports/index"
 import { useDispatch } from "react-redux"
-import { set } from '../redux/productModalSlice'
+import { set } from '../../redux/productModalSlice'
 
 const ProductCard = props => {
     const dispatch = useDispatch();

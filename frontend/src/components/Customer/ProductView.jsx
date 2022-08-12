@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import numberWithCommas from "../utils/numberWithCommas";
-import Button from './Button';
+import { Button, numberWithCommas } from "../../imports/index"
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-import { addItem } from '../redux/cartSlice';
+import { addItem } from '../../redux/cartSlice';
 import { useDispatch } from 'react-redux';
-import { remove } from '../redux/productModalSlice';
+import { remove } from '../../redux/productModalSlice';
 
 const ProductView = props => {
     const dispatch = useDispatch();

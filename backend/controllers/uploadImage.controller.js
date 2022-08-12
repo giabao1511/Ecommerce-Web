@@ -1,21 +1,21 @@
+const { serviceUpload } = require("../services/product.service");
 const cloudinary = require("../utils/cloudinary");
 
 const uploadImgCtrl = {
   uploadImg: async (req, res) => {
     try {
-      await cloudinary.uploader.upload(
-        req.file.path,
-        {
-          folder: "web-ecommerce",
-        },
-        (err, data) => {
-          if (err) throw err;
-          res.status(200).json({
-            public_id: data.public_id,
-            url: data.secure_url,
-          });
-        }
-      );
+      const { image01, image02 } = req.files;
+      const {title} = req.body;
+      const imagesArr = [...image01, ...image02];
+
+      const { image01_data, image02_data } = await serviceUpload(imagesArr);
+
+
+      return res.json({
+        title,
+        image01_data,
+        image02_data,
+      });
     } catch (error) {
       return res.status(500).json({
         error,

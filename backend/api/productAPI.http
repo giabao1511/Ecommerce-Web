@@ -7,7 +7,7 @@ Content-Type: application/json
     "image01": "https://res.cloudinary.com/dfupi3m0b/image/upload/v1659456460/web-ecommerce/tdfoutfzdaq3xtoqpjxz.jpg", 
     "image02": "https://res.cloudinary.com/dfupi3m0b/image/upload/v1659456533/web-ecommerce/yk7efhlbcdmfdvagkerb.jpg",
     "categorySlug": "ao-so-mi",
-    "color": ["red", "blue"], 
+    "colors": ["red", "blue"], 
     "slug": "ao-so-mi-2",
     "size": ["s"],
     "description": "Ao dep" 
@@ -19,12 +19,11 @@ GET http://localhost:5000/api/product/all
 Content-Type: application/json
 
 ### Update product
-POST http://localhost:5000/api/product/edit/62e881fa94ecb150a8411536
+POST http://localhost:5000/api/product/edit/62f0de567e8af1c3e75af05e
 Content-Type: application/json
 
 {
- "title": "Ao so mi 4", 
- "slug": "ao-so-mi-4"   
+ "slug": "ao-thun-dinosaur-03"
 }
 
 ### Get detail product
@@ -32,6 +31,6 @@ GET http://localhost:5000/api/product/detail/62e881fa94ecb150a8411536
 Content-Type: application/json
 
 ### Delete product
-DELETE  http://localhost:5000/api/product/delete/62e94a4240cd9118508cb0a6
+DELETE  http://localhost:5000/api/product/delete/62ed44129d478c37a13984e6
 Content-Type: application/json
 

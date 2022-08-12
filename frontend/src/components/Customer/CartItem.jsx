@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import numberWithCommas from '../utils/numberWithCommas'
+import {numberWithCommas} from '../../imports/index'
 import { useDispatch } from 'react-redux'
-import { removeItem, updateItem } from '../redux/cartSlice'
+import { removeItem, updateItem } from '../../redux/cartSlice'
 
 const CartItem = ({ item }) => {
     const [quantity, setQuantity] = useState(item.quantity);
@@ -33,7 +33,7 @@ const CartItem = ({ item }) => {
                     <Link to={`/catalogue/${item.slug}`}>
                         {`${item.product.title} - ${item.color} - Size: `}
                         <span style={{ textTransform: 'uppercase' }}>
-                           {item.size}
+                            {item.size}
                         </span>
                     </Link>
                 </div>

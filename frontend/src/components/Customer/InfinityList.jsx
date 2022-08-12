@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
-import Grid from './Grid';
-import ProductCard from './ProductCard';
+import { Grid, ProductCard } from "../../imports/index"
 
 const InfinityList = props => {
     const perLoad = 6;

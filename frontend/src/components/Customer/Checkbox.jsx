@@ -4,7 +4,6 @@ import React, { useRef } from 'react';
 const Checkbox = props => {
     const inputRef = useRef(null);
 
-    // console.log(props.onChange);
     const onChange = () => {
         if (props.onChange) {
             props.onChange(inputRef.current);

@@ -69,6 +69,7 @@ export const cartSlice = createSlice({
         );
       }
     },
+    
     removeItem: (state, action) => {
       const removedItem = action.payload;
       state.value = deleteItem(state.value, removedItem);

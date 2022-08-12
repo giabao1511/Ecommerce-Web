@@ -1,10 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Layout from './components/Layout'
-import Catalogue from './pages/Catalogue'
-import Product from './pages/Product'
-import Cart from './pages/Cart'
-import Home from './pages/Home'
+import { Layout, Catalogue, Product, Cart, Home } from "./imports/index"
 
 const App = () => {
   return (

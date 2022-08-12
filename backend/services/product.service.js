@@ -1,4 +1,5 @@
 const _PRODUCT = require("../models/Product.model");
+const cloudinary = require("../utils/cloudinary");
 
 module.exports = {
   serviceGetAll: async () => {
@@ -24,28 +25,28 @@ module.exports = {
     image01,
     image02,
     categorySlug,
-    color,
+    colors,
     slug,
     size,
     description,
   }) => {
     try {
-      if (
-        !title ||
-        !price ||
-        !image01 ||
-        !image02 ||
-        !categorySlug ||
-        !color ||
-        !slug ||
-        !size ||
-        !description
-      ) {
-        return {
-          code: 406,
-          message: "Vui lòng nhập đầy đủ thông tin !",
-        };
-      }
+      // if (
+      //   !title ||
+      //   !price ||
+      //   !image01 ||
+      //   !image02 ||
+      //   !categorySlug ||
+      //   !colors ||
+      //   !slug ||
+      //   !size ||
+      //   !description
+      // ) {
+      //   return {
+      //     code: 406,
+      //     message: "Vui lòng nhập đầy đủ thông tin !",
+      //   };
+      // }
 
       const checkExists = await _PRODUCT.findOne({ slug });
 
@@ -62,7 +63,7 @@ module.exports = {
         image01,
         image02,
         categorySlug,
-        color,
+        colors,
         slug,
         size,
         description,
@@ -84,7 +85,7 @@ module.exports = {
   serviceGetDetail: async ({ id }) => {
     try {
       const product = await _PRODUCT.findById(id);
-      
+
       console.log(product);
 
       if (!product) {
@@ -114,7 +115,7 @@ module.exports = {
     image01,
     image02,
     categorySlug,
-    color,
+    colors,
     slug,
     size,
     description,
@@ -134,7 +135,7 @@ module.exports = {
         image01,
         image02,
         categorySlug,
-        color,
+        colors,
         slug,
         size,
         description,
@@ -159,6 +160,35 @@ module.exports = {
       return {
         code: 200,
         message: "Delete product successfully",
+      };
+    } catch (error) {
+      return {
+        code: 500,
+        message: "Error",
+      };
+    }
+  },
+
+  serviceUpload: async (arr) => {
+    try {
+      const dataImg = [];
+
+      for (let item of arr) {
+        await cloudinary.uploader.upload(
+          item.path,
+          {
+            folder: process.env.FOLDER_PRODUCT,
+          },
+          (err, data) => {
+            if (err) throw err;
+            dataImg.push({ public_id: data.public_id, url: data.secure_url });
+          }
+        );
+      }
+
+      return {
+        image01_data: dataImg[0],
+        image02_data: dataImg[1],
       };
     } catch (error) {
       return {
