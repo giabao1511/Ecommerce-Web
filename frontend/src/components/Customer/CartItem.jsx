@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import {numberWithCommas} from '../../imports/index'
+import { numberWithCommas } from '../../imports/index'
 import { useDispatch } from 'react-redux'
 import { removeItem, updateItem } from '../../redux/cartSlice'
 

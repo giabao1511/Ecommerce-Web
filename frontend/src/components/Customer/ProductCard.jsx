@@ -1,9 +1,9 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
+import { useDispatch } from "react-redux"
 import { Link } from 'react-router-dom'
 import { Button, numberWithCommas } from "../../imports/index"
-import { useDispatch } from "react-redux"
-import { set } from '../../redux/productModalSlice'
+import { setDataModal } from '../../redux/productSlice'
 
 const ProductCard = props => {
     const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const ProductCard = props => {
                     size="sm"
                     icon="bx bx-cart"
                     animate={true}
-                    onClick={() => dispatch(set(props.slug))}
+                    onClick={() => dispatch(setDataModal(props.slug))}
                 >
                     chọn mua
                 </Button>

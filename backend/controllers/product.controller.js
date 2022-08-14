@@ -31,7 +31,13 @@ const productCtrl = {
 
       const imagesArr = [...image01, ...image02];
 
-      const { image01_data, image02_data } = await serviceUpload(imagesArr);
+      const { image01_data, image02_data, error, messageErr } = await serviceUpload(imagesArr, slug);
+
+      if(error) {
+        return res.status(404).json({
+          messageErr,
+        });
+      }
 
       const { code, message, element } = await serviceCreate({
         title,
@@ -96,8 +102,8 @@ const productCtrl = {
   },
   getDetailProduct: async (req, res) => {
     try {
-      const id = req.params.id;
-      const { code, message, element } = await serviceGetDetail({ id });
+      const slug = req.params.slug;
+      const { code, message, element } = await serviceGetDetail({ slug });
 
       return res.status(code).json({
         message,

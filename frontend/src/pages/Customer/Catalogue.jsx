@@ -13,6 +13,8 @@ const Catalogue = () => {
     size: []
   }
 
+  console.log("re-render");
+
   const allProductsList = useSelector(state => state.product.allProducts)
   const [products, setProducts] = useState(allProductsList);
   const [filter, setFilter] = useState(initFilter)
@@ -83,8 +85,10 @@ const Catalogue = () => {
   }, [updateProducts])
 
   useEffect(() => {
-    dispatch(getAllProducts())
-  }, [dispatch])
+    if (!allProductsList) {
+      dispatch(getAllProducts())
+    }
+  }, [dispatch, allProductsList])
 
   return (
     <Helmet title="Sản phẩm">

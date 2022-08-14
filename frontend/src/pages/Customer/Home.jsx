@@ -1,11 +1,23 @@
-import React from 'react'
-import Section, { SectionBody, SectionTitle } from '../../components/Customer/Section'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom"
-import { banner, policy, sliderData, productData } from "../../imports/assets"
-import { Grid, PolicyCard, HeroSlider, Helmet, ProductCard } from "../../imports/index"
+import Section, { SectionBody, SectionTitle } from '../../components/Customer/Section'
+import { banner, policy, sliderData } from "../../imports/assets"
+import { getRandom, Grid, Helmet, HeroSlider, PolicyCard, ProductCard } from "../../imports/index"
+import { getAllProducts } from '../../redux/apiRequest'
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const allProducts = useSelector(state => state.product.allProducts)
+
+  useEffect(() => {
+    if (!allProducts) {
+      dispatch(getAllProducts());
+    }
+  }, [dispatch, allProducts])
+
   return (
+    allProducts &&
     <Helmet title="Trang chủ">
       {/* hero slider */}
       <HeroSlider
@@ -50,7 +62,7 @@ const Home = () => {
             gap={20}
           >
             {
-              productData.getProducts(4).map((item, index) => (
+              getRandom(allProducts, 4).map((item, index) => (
                 <ProductCard
                   key={index}
                   img01={item.image01}
@@ -78,7 +90,7 @@ const Home = () => {
             gap={20}
           >
             {
-              productData.getProducts(8).map((item, index) => (
+              getRandom(allProducts, 8).map((item, index) => (
                 <ProductCard
                   key={index}
                   img01={item.image01}
@@ -115,7 +127,7 @@ const Home = () => {
             gap={20}
           >
             {
-              productData.getProducts(12).map((item, index) => (
+              getRandom(allProducts, 12).map((item, index) => (
                 <ProductCard
                   key={index}
                   img01={item.image01}

@@ -1,17 +1,23 @@
-import React, { useEffect, useState } from 'react'
-import { productData } from "../../imports/assets"
-import { ProductView, Button } from "../../imports/index"
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { remove } from '../../redux/productModalSlice'
+import { Button, ProductView } from "../../imports/index"
+import { getDetailProduct } from '../../redux/apiRequest'
+import { clearDetailProduct, removeDataModal } from '../../redux/productSlice'
 
 const Modal = () => {
     const dispatch = useDispatch();
-    const productSlug = useSelector(state => state.productModal.value)
-    const [product, setProduct] = useState(undefined)
+    const productSlug = useSelector(state => state.product.modal)
+    const product = useSelector(state => state.product.detailProduct);
 
     useEffect(() => {
-        setProduct(productData.getProductBySlug(productSlug))
-    }, [productSlug])
+        if (productSlug) {
+            dispatch(getDetailProduct(productSlug))
+        }
+
+        return () => {
+            dispatch(clearDetailProduct())
+        }
+    }, [dispatch, productSlug])
 
     return (
         <div className={`modal ${product && 'active'}`}>
@@ -20,7 +26,7 @@ const Modal = () => {
                 <div className="modal__content__close">
                     <Button
                         size="sm"
-                        onClick={() => dispatch(remove())}
+                        onClick={() => dispatch(removeDataModal())}
                     >
                         đóng
                     </Button>

@@ -19,15 +19,15 @@ GET http://localhost:5000/api/product/all
 Content-Type: application/json
 
 ### Update product
-POST http://localhost:5000/api/product/edit/62f0de567e8af1c3e75af05e
+POST http://localhost:5000/api/product/edit/62f8fece48a5931378e6036b
 Content-Type: application/json
 
 {
- "slug": "ao-thun-dinosaur-03"
+    "categorySlug": "ao-somi"
 }
 
 ### Get detail product
-GET http://localhost:5000/api/product/detail/62e881fa94ecb150a8411536
+GET http://localhost:5000/api/product/detail/ao-thun-polo-07
 Content-Type: application/json
 
 ### Delete product

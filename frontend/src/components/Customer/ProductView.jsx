@@ -1,17 +1,16 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button, numberWithCommas } from "../../imports/index"
-import { toast, ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
-import { addItem } from '../../redux/cartSlice';
 import { useDispatch } from 'react-redux';
-import { remove } from '../../redux/productModalSlice';
+import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Button, numberWithCommas } from "../../imports/index";
+import { addItem } from '../../redux/cartSlice';
+import { removeDataModal } from '../../redux/productSlice';
 
 const ProductView = props => {
     const dispatch = useDispatch();
     let product = props.product;
-    console.log(product, "proc");
 
     if (!product) {
         product = {
@@ -78,7 +77,7 @@ const ProductView = props => {
                 quantity,
                 price: product.price
             }))
-            dispatch(remove())
+            dispatch(removeDataModal())
             navigate('/cart')
         }
     }

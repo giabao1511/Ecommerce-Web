@@ -1,5 +1,12 @@
 import axios from "axios";
-import { getAllProductsFail, getAllProductsStart, getAllProductsSuccess } from "./productSlice";
+import {
+  getAllProductsFail,
+  getAllProductsStart,
+  getAllProductsSuccess,
+  getDetailProductFail,
+  getDetailProductStart,
+  getDetailProductSuccess,
+} from "./productSlice";
 
 export const getAllProducts = () => async (dispatch) => {
   try {
@@ -9,5 +16,16 @@ export const getAllProducts = () => async (dispatch) => {
     dispatch(getAllProductsSuccess(data?.element));
   } catch (error) {
     dispatch(getAllProductsFail(error));
+  }
+};
+
+export const getDetailProduct = (slug) => async (dispatch) => {
+  try {
+    dispatch(getDetailProductStart());
+
+    const { data } = await axios.get(`/api/product/detail/${slug}`);
+    dispatch(getDetailProductSuccess(data?.element));
+  } catch (error) {
+    dispatch(getDetailProductFail(error));
   }
 };

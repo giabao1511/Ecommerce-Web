@@ -82,11 +82,9 @@ module.exports = {
     }
   },
 
-  serviceGetDetail: async ({ id }) => {
+  serviceGetDetail: async ({ slug }) => {
     try {
-      const product = await _PRODUCT.findById(id);
-
-      console.log(product);
+      const product = await _PRODUCT.findOne({ slug });
 
       if (!product) {
         return {
@@ -129,7 +127,7 @@ module.exports = {
         };
       }
 
-      const product = await _PRODUCT.findByIdAndUpdate(id, {
+      await _PRODUCT.findByIdAndUpdate(id, {
         title,
         price,
         image01,
@@ -155,7 +153,7 @@ module.exports = {
 
   serviceDelete: async ({ id }) => {
     try {
-      const product = await _PRODUCT.findByIdAndDelete(id);
+      await _PRODUCT.findByIdAndDelete(id);
 
       return {
         code: 200,
@@ -169,9 +167,19 @@ module.exports = {
     }
   },
 
-  serviceUpload: async (arr) => {
+  serviceUpload: async (arr, check) => {
     try {
       const dataImg = [];
+      if (check) {
+        const product = await _PRODUCT.findOne({ slug: check });
+
+        if (product) {
+          return {
+            error: 404,
+            messageErr: "Sản phẩm đã tồn tại",
+          };
+        }
+      }
 
       for (let item of arr) {
         await cloudinary.uploader.upload(

@@ -1,20 +1,35 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Section, { SectionBody, SectionTitle } from "../../components/Customer/Section"
 import { useParams } from "react-router-dom"
-import { ProductCard, ProductView, Grid, Helmet } from "../../imports/index"
-import { productData } from "../../imports/assets"
+import { ProductCard, ProductView, Grid, Helmet, getRandom } from "../../imports/index"
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllProducts, getDetailProduct } from '../../redux/apiRequest'
+import { clearDetailProduct } from '../../redux/productSlice'
 
-const Product = props => {
+const Product = () => {
   const slug = useParams().slug;
-  const product = productData.getProductBySlug(slug);
-  const relatedProduct = productData.getProducts(8);
+  const dispatch = useDispatch();
+  const product = useSelector(state => state.product.detailProduct)
+  const allProducts = useSelector(state => state.product.allProducts)
+  let relatedProduct = useRef(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [product]);
+    dispatch(getDetailProduct(slug))
+
+    if (!allProducts) {
+      dispatch(getAllProducts());
+    } else {
+      relatedProduct.current = getRandom(allProducts, 4)
+    }
+
+    return () => {
+      dispatch(clearDetailProduct())
+    }
+  }, [dispatch, slug, allProducts]);
 
   return (
-    <Helmet title={product.title}>
+    product && <Helmet title={product.title}>
       <Section>
         <SectionBody>
           <ProductView product={product} />
@@ -32,7 +47,7 @@ const Product = props => {
             gap={10}
           >
             {
-              relatedProduct.map((item, index) => (
+              relatedProduct.current && relatedProduct.current.map((item, index) => (
                 <ProductCard
                   key={index}
                   img01={item.image01}

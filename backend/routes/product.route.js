@@ -11,7 +11,7 @@ const multipleUpload = uploadCheck.fields([
 router.get("/all", productCtrl.getAllProducts);
 
 // Get detail product
-router.get("/detail/:id", productCtrl.getDetailProduct);
+router.get("/detail/:slug", productCtrl.getDetailProduct);
 
 // Create product
 router.post("/create", multipleUpload, productCtrl.createProduct);
