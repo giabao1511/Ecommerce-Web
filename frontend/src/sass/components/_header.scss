@@ -83,10 +83,27 @@
 
       &__item {
         @include flex(center, center);
+
+        img {
+          width: 35px;
+          border-radius: 50%;
+          object-fit: contain;
+          object-position: center;
+        }
+      }
+
+      @include tablet {
+        img {
+          width: 30px;
+        }
       }
 
       @include mobile {
         font-size: 1.5rem;
+
+        img {
+          width: 25px;
+        }
       }
     }
 

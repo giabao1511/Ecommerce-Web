@@ -1,4 +1,4 @@
-const _PRODUCT = require("../models/Product.model");
+const _PRODUCT = require("../models/Product");
 const cloudinary = require("../utils/cloudinary");
 
 module.exports = {

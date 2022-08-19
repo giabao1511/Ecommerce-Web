@@ -20,7 +20,7 @@ const Modal = () => {
     }, [dispatch, productSlug])
 
     return (
-        <div className={`modal ${product && 'active'}`}>
+        <div className={`modal ${productSlug && 'active'}`}>
             <div className="modal__content">
                 <ProductView product={product} />
                 <div className="modal__content__close">

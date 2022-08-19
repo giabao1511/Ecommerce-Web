@@ -14,8 +14,8 @@ app.get("/test", (req, res) => {
   });
 });
 
-const productRoutes = require("./routes/product.route");
-const uploadImgRoutes = require("./routes/uploadImage.route");
+const productRoutes = require("./routes/productRoute");
+const uploadImgRoutes = require("./routes/uploadImage");
 
 app.use("/api/product", productRoutes);
 app.use("/api/cloudinary", uploadImgRoutes);

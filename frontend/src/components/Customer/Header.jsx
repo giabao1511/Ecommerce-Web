@@ -1,6 +1,12 @@
 import React, { useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { logo } from '../../imports/assets'
+import avatarImg from "../../assets/images/avatar.jpg"
+
+const user = {
+  avatarImg,
+  name: 'Chau Gia Bao',
+}
 
 const navInfo = [
   {
@@ -87,7 +93,9 @@ const Header = () => {
               </Link>
             </div>
             <div className="header__menu__item header__menu__right__item">
-              <i className='bx bx-user'></i>
+              <Link to="/login">
+                <img src={user.avatarImg} alt="" />
+                </Link>
             </div>
           </div>
         </div>

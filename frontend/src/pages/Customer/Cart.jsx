@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from "react-router-dom"
-import { CartItem, Helmet, numberWithCommas, Button } from "../../imports/index"
-import { productData } from "../../imports/assets"
+import { Button, CartItem, Helmet, numberWithCommas } from "../../imports/index"
 
 const Cart = () => {
+  // const arr1 = [1, 2, 3, 4, 5]
+  // const arr2 = [2, 3]
+  // console.log(arr1.filter(e => arr2.includes(e)), "test");
+  
   const cartItems = useSelector(state => state.cart.value)
-  const [cartProducts, setCardProducts] = useState([])
   const [totalProducts, setTotalProducts] = useState(0)
   const [totalPrice, setTotalPrice] = useState(0)
 
   useEffect(() => {
-    setCardProducts(productData.getCartItemsDetail(cartItems))
     setTotalProducts(cartItems.reduce((total, item) => total + Number(item.quantity), 0))
     setTotalPrice(cartItems.reduce((total, item) => total + Number(item.quantity) * Number(item.price), 0))
   }, [cartItems])
-
-  console.log(cartProducts, "re-render");
 
   return (
     <Helmet title="Giỏ hàng">
@@ -39,9 +38,9 @@ const Cart = () => {
           </div>
         </div>
         <div className="cart__list">
-          {cartProducts.length > 0
+          {cartItems.length > 0
             ?
-            cartProducts.map((item, index) => (
+            cartItems.map((item, index) => (
               <CartItem key={index} item={item} />
             ))
             :

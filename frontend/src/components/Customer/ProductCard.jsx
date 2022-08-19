@@ -28,7 +28,7 @@ const ProductCard = props => {
                     size="sm"
                     icon="bx bx-cart"
                     animate={true}
-                    onClick={() => dispatch(setDataModal(props.slug))}
+                    onClick={() => { dispatch(setDataModal(props.slug)) }}
                 >
                     chọn mua
                 </Button>

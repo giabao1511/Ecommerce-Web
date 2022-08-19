@@ -40,6 +40,10 @@ const ProductSchema = mongoose.Schema({
     type: [String],
     require: true,
   },
+  quantity: {
+    type: Number, 
+    require: true,
+  },
   description: {
     type: String,
     require: true,

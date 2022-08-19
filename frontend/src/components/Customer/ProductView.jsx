@@ -62,7 +62,8 @@ const ProductView = props => {
                 color,
                 size,
                 quantity,
-                price: product.price
+                price: product.price,
+                product
             }))
             toast.success("Đã thêm vào giỏ hàng !")
         }
@@ -75,7 +76,8 @@ const ProductView = props => {
                 color,
                 size,
                 quantity,
-                price: product.price
+                price: product.price,
+                product
             }))
             dispatch(removeDataModal())
             navigate('/cart')

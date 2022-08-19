@@ -18,6 +18,9 @@ export { default as Cart } from "../pages/Customer/Cart";
 export { default as Catalogue } from "../pages/Customer/Catalogue";
 export { default as Home } from "../pages/Customer/Home";
 export { default as Product } from "../pages/Customer/Product";
+export { default as Login } from "../pages/Customer/Login";
+export { default as Input } from "../components/InputField";
+export { default as Register } from "../pages/Customer/Register";
 
 //! utils
 export { default as numberWithCommas } from "../utils/numberWithCommas";

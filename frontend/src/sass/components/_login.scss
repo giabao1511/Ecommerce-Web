@@ -1,0 +1,146 @@
+.login {
+  @include flex(center, center);
+  flex-direction: column;
+  box-shadow: $box-shadow;
+  padding: 1rem;
+
+  &__title {
+    color: $main-color;
+    margin-top: 8rem;
+    font-size: 3rem;
+    font-weight: bold;
+  }
+
+  &__item {
+    &__input {
+      margin-top: 2rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      input {
+        border-radius: 4px;
+        padding: 1rem 18rem 1rem 0.5rem;
+        transition: all 0.2s ease;
+
+        &:focus-visible {
+          outline: 1px solid $main-color;
+          border: 2px solid $main-color;
+        }
+      }
+    }
+
+    &__button {
+      display: block;
+      width: 100%;
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      padding: 1.4rem 0;
+      border-radius: 4px;
+      cursor: pointer;
+      color: $txt-white;
+      border: none;
+      background: $main-color;
+      transition: all 0.4s ease;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+
+    a {
+      color: $main-color;
+      font-size: 1.5rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &__more {
+      @include flex(center, flex-start);
+
+      color: #ccc;
+      margin: 1.5rem 0;
+
+      &__content {
+        font-size: 1.3rem;
+        padding: 0 1rem;
+      }
+
+      &__line {
+        flex: 1;
+        height: 1px;
+        width: 100%;
+        display: block;
+        background: #ccc;
+      }
+    }
+
+    &__social {
+      @include flex(center, space-between);
+      width: 100%;
+
+      &__item ~ &__item {
+        margin-left: 1rem;
+      }
+
+      &__item {
+        @include flex(center, center);
+        border: 1px solid #ccc;
+        padding: 0.5rem 1rem;
+        flex: 1;
+
+        i {
+          font-size: 2.5rem;
+          margin-right: 0.8rem;
+        }
+
+        .fa-google {
+          background: conic-gradient(
+              from -45deg,
+              #ea4335 110deg,
+              #4285f4 90deg 180deg,
+              #34a853 180deg 270deg,
+              #fbbc05 270deg
+            )
+            73% 55%/150% 150% no-repeat;
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          -webkit-text-fill-color: transparent;
+        }
+
+        .fa-facebook-square {
+          color: #3b5998;
+          background-image: linear-gradient(
+            to bottom,
+            transparent 20%,
+            white 20%,
+            white 93%,
+            transparent 93%
+          );
+          background-size: 55%;
+          background-position: 70% 0;
+          background-repeat: no-repeat;
+        }
+
+        span {
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    &__direct {
+      margin: 3rem 0;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+  }
+}
