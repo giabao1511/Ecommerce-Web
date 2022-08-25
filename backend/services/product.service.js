@@ -31,22 +31,22 @@ module.exports = {
     description,
   }) => {
     try {
-      // if (
-      //   !title ||
-      //   !price ||
-      //   !image01 ||
-      //   !image02 ||
-      //   !categorySlug ||
-      //   !colors ||
-      //   !slug ||
-      //   !size ||
-      //   !description
-      // ) {
-      //   return {
-      //     code: 406,
-      //     message: "Vui lòng nhập đầy đủ thông tin !",
-      //   };
-      // }
+      if (
+        !title ||
+        !price ||
+        !image01 ||
+        !image02 ||
+        !categorySlug ||
+        !colors ||
+        !slug ||
+        !size ||
+        !description
+      ) {
+        return {
+          code: 406,
+          message: "Vui lòng nhập đầy đủ thông tin !",
+        };
+      }
 
       const checkExists = await _PRODUCT.findOne({ slug });
 

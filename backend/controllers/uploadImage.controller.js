@@ -5,11 +5,10 @@ const uploadImgCtrl = {
   uploadImg: async (req, res) => {
     try {
       const { image01, image02 } = req.files;
-      const {title} = req.body;
+      const { title } = req.body;
       const imagesArr = [...image01, ...image02];
 
       const { image01_data, image02_data } = await serviceUpload(imagesArr);
-
 
       return res.json({
         title,
