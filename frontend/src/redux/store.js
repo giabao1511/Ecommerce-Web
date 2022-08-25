@@ -4,15 +4,22 @@ import cartSlice from "./cartSlice";
 import productSlice from "./productSlice";
 
 let store;
-if (process.env.NODE_ENV === "development") {
-  store = configureStore({
-    reducer: {
-      cart: cartSlice,
-      product: productSlice,
-    },
+// if (process.env.NODE_ENV === "development") {
+//   store = configureStore({
+//     reducer: {
+//       cart: cartSlice,
+//       product: productSlice,
+//     },
 
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
-  });
-}
+//     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+//   });
+// }
+
+store = configureStore({
+  reducer: {
+    cart: cartSlice,
+    product: productSlice,
+  },
+});
 
 export default store;
