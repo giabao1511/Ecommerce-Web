@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Button, numberWithCommas } from "../../imports/index";
 import { addItem } from '../../redux/cartSlice';
@@ -11,6 +11,7 @@ import { removeDataModal } from '../../redux/productSlice';
 const ProductView = props => {
     const dispatch = useDispatch();
     let product = props.product;
+    const { currentUser } = useSelector(state => state.auth);
 
     if (!product) {
         product = {
@@ -56,31 +57,41 @@ const ProductView = props => {
     }
 
     const addToCart = () => {
-        if (checkChoose()) {
-            dispatch(addItem({
-                slug: product.slug,
-                color,
-                size,
-                quantity,
-                price: product.price,
-                product
-            }))
-            toast.success("Đã thêm vào giỏ hàng !")
+        if (currentUser) {
+            if (checkChoose()) {
+                dispatch(addItem({
+                    slug: product.slug,
+                    color,
+                    size,
+                    quantity,
+                    price: product.price,
+                    product
+                }))
+                toast.success("Đã thêm vào giỏ hàng !")
+            }
+        } else {
+            dispatch(removeDataModal())
+            navigate("/login")
         }
     }
 
     const gotoCart = () => {
-        if (checkChoose()) {
-            dispatch(addItem({
-                slug: product.slug,
-                color,
-                size,
-                quantity,
-                price: product.price,
-                product
-            }))
+        if (currentUser) {
+            if (checkChoose()) {
+                dispatch(addItem({
+                    slug: product.slug,
+                    color,
+                    size,
+                    quantity,
+                    price: product.price,
+                    product
+                }))
+                dispatch(removeDataModal())
+                navigate('/cart')
+            }
+        } else {
             dispatch(removeDataModal())
-            navigate('/cart')
+            navigate("/login")
         }
     }
 
@@ -199,17 +210,6 @@ const ProductView = props => {
                     </div>
                 </div>
             </div >
-            <ToastContainer
-                position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-            />
         </>
     )
 }

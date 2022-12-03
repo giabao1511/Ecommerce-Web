@@ -31,6 +31,6 @@ GET http://localhost:5000/api/product/detail/ao-thun-polo-07
 Content-Type: application/json
 
 ### Delete product
-DELETE  http://localhost:5000/api/product/delete/62f0df437e8af1c3e75af069
+DELETE  http://localhost:5000/api/product/delete/6308694095186cd7163aaf40
 Content-Type: application/json
 

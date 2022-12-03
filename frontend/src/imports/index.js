@@ -19,12 +19,15 @@ export { default as Catalogue } from "../pages/Customer/Catalogue";
 export { default as Home } from "../pages/Customer/Home";
 export { default as Product } from "../pages/Customer/Product";
 export { default as Login } from "../pages/Customer/Login";
-export { default as Input } from "../components/InputField";
+export { default as ProfileUser } from "../pages/Customer/Profile/ProfileUser";
 export { default as Register } from "../pages/Customer/Register";
+export { default as Sidebar } from "../pages/Customer/Profile/Sidebar";
+export { default as ProfileLayout } from "../pages/Customer/Profile/ProfileLayout";
 
 //! utils
 export { default as numberWithCommas } from "../utils/numberWithCommas";
 export { default as getRandom } from "../utils/getRandom";
+export { default as inputRequirement } from "../utils/inputRequirement";
 
 //! Redux slice
 export { default as cartSlice } from "../redux/cartSlice";

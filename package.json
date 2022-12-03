@@ -1,0 +1,24 @@
+{
+  "name": "shop-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cd backend && npm start",
+    "client": "cd frontend && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giabao1511/Ecommerce-Web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/giabao1511/Ecommerce-Web/issues"
+  },
+  "homepage": "https://github.com/giabao1511/Ecommerce-Web#readme",
+  "dependencies": {
+    "sweetalert2": "^11.6.14"
+  }
+}

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { numberWithCommas } from '../../imports/index'
 import { useDispatch } from 'react-redux'
 import { removeItem, updateItem } from '../../redux/cartSlice'
+import Swal from 'sweetalert2'
 
 const CartItem = ({ item }) => {
     const [quantity, setQuantity] = useState(item.quantity);
@@ -20,7 +21,25 @@ const CartItem = ({ item }) => {
     }
 
     const removeCartItem = () => {
-        dispatch(removeItem(item))
+        Swal.fire({
+            title: 'Bạn có muốn xóa sản phẩm không?',
+            text: "Bạn sẽ không thể thu hồi sản phẩm!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Có, tôi muốn!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Hoàn tất!',
+                    'Đã xóa sản phẩm trong giỏ hàng.',
+                    'success'
+                ).then(() => {
+                    dispatch(removeItem(item))
+                })
+            }
+        })
     }
 
     return (

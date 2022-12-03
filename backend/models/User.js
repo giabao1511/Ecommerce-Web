@@ -29,9 +29,16 @@ const UserSchema = new mongoose.Schema(
       type: Object,
       default: {
         public_id: "15112003",
-        url: "https://res.cloudinary.com/dfupi3m0b/image/upload/v1660878241/web-ecommerce/default-profile-icon-24_davoz7.jpg",
+        url: "https://res.cloudinary.com/dfupi3m0b/image/upload/v1661615195/web-ecommerce/default-profile-icon-24_ydywet.jpg",
       },
     },
+
+    cart: {
+      type: Object, 
+      default: {
+        
+      }
+    }
   },
   { timestamps: true }
 );

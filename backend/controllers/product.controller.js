@@ -31,9 +31,10 @@ const productCtrl = {
 
       const imagesArr = [...image01, ...image02];
 
-      const { image01_data, image02_data, error, messageErr } = await serviceUpload(imagesArr, slug);
+      const { image01_data, image02_data, error, messageErr } =
+        await serviceUpload(imagesArr, slug);
 
-      if(error) {
+      if (error) {
         return res.status(404).json({
           messageErr,
         });

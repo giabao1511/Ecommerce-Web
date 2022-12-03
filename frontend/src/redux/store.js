@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
+import authSlice from "./authSlice";
 import cartSlice from "./cartSlice";
 import productSlice from "./productSlice";
 
@@ -9,6 +10,7 @@ if (process.env.NODE_ENV === "development") {
     reducer: {
       cart: cartSlice,
       product: productSlice,
+      auth: authSlice,
     },
 
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
@@ -18,6 +20,7 @@ if (process.env.NODE_ENV === "development") {
     reducer: {
       cart: cartSlice,
       product: productSlice,
+      auth: authSlice,
     },
   });
 }

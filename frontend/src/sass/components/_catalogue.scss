@@ -15,7 +15,7 @@
       padding: 1rem;
       position: fixed;
       left: 0;
-      top: $header-tablet-height; 
+      top: $header-tablet-height;
       z-index: 100;
       box-shadow: $box-shadow;
       transform: translateX(-100%);
@@ -27,7 +27,7 @@
     }
 
     &.active {
-      transform: translateX(0)
+      transform: translateX(0);
     }
 
     &__widget {
@@ -50,7 +50,7 @@
     }
 
     &__toggle {
-      display: none; 
+      display: none;
 
       @include tablet {
         display: block;
@@ -59,13 +59,13 @@
     }
 
     &__close {
-      display: none; 
+      display: none;
 
       @include tablet {
-        display: block; 
+        display: block;
         margin-bottom: 1rem;
         cursor: pointer;
-        
+
         i {
           font-size: 2rem;
         }

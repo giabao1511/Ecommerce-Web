@@ -1,12 +1,8 @@
+import { Badge } from 'antd'
 import React, { useEffect, useRef } from 'react'
+import { useSelector } from "react-redux"
 import { Link, useLocation } from 'react-router-dom'
 import { logo } from '../../imports/assets'
-import avatarImg from "../../assets/images/avatar.jpg"
-
-const user = {
-  avatarImg,
-  name: 'Chau Gia Bao',
-}
 
 const navInfo = [
   {
@@ -29,13 +25,17 @@ const navInfo = [
 
 const Header = () => {
   const { pathname } = useLocation();
+  const cartItems = useSelector(state => state.cart.value)
   const activeNavIdx = navInfo.findIndex(e => e.path === pathname)
   const headerRef = useRef(null);
   const menuLeftRef = useRef(null);
-
+  const { currentUser } = useSelector(state => state.auth)
+  const user = currentUser?.element;
   const menuToggle = () => {
     menuLeftRef.current.classList.toggle("active");
   }
+
+  console.log(cartItems, "ashduashdh");
 
   useEffect(() => {
     const shrinkCondition = () => {
@@ -89,18 +89,27 @@ const Header = () => {
             </div>
             <div className="header__menu__item header__menu__right__item">
               <Link to="/cart">
-                <i className='bx bx-shopping-bag'></i>
+                <Badge count={cartItems.length}>
+                  <i className='bx bx-shopping-bag' style={{ fontSize: 20 }}></i>
+                </Badge>
               </Link>
             </div>
             <div className="header__menu__item header__menu__right__item">
-              <Link to="/login">
-                <img src={user.avatarImg} alt="" />
-                </Link>
+              {
+                currentUser?.statusCode === 200 ?
+                  <Link to={`/user/account/profile/${user?._id}`}>
+                    <img src={user?.avatar?.url} alt="" />
+                  </Link>
+                  :
+                  <Link to="/login">
+                    <button className="login-btn">Đăng nhập</button>
+                  </Link>
+              }
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 

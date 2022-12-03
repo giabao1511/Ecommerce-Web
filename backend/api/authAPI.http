@@ -1,0 +1,17 @@
+POST http://localhost:5000/api/auth/customer/register
+Content-Type: application/json
+
+{
+    "username": "giabao", 
+    "email": "giabao@gmail.com",
+    "password": "giabao"
+}
+
+###
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json 
+
+{
+    "username": "giabao", 
+    "password": "giabao"
+}

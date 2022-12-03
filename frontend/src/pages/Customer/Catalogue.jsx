@@ -13,8 +13,6 @@ const Catalogue = () => {
     size: []
   }
 
-  console.log("re-render");
-
   const allProductsList = useSelector(state => state.product.allProducts)
   const [products, setProducts] = useState(allProductsList);
   const [filter, setFilter] = useState(initFilter)
@@ -71,7 +69,7 @@ const Catalogue = () => {
 
       if (filter.size.length > 0) {
         temp = temp.filter(e => {
-          const check = e.size.find(color => filter.size.includes(color))
+          const check = e.size.find(size => filter.size.includes(size))
           return check !== undefined
         })
       }
