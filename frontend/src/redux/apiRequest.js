@@ -16,7 +16,7 @@ import {
   getDetailProductSuccess,
 } from "./productSlice";
 
-const URL = "https://shopgiabao.herokuapp.com";
+const URL = "https://react-js-ecommerce-web.vercel.app";
 
 export const getAllProducts = () => async (dispatch) => {
   try {
