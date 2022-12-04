@@ -21,8 +21,7 @@ const URL = "https://react-js-ecommerce-web.vercel.app";
 export const getAllProducts = () => async (dispatch) => {
   try {
     dispatch(getAllProductsStart());
-    console.log("hello");
-
+    
     const { data } = await axios.get(`${URL}/api/product/all`);
     dispatch(getAllProductsSuccess(data?.element));
   } catch (error) {
