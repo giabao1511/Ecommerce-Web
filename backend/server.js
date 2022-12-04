@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 const cors = require("cors");
-const connectDB = require("../configs/connectDB");
+const connectDB = require("./configs/connectDB");
 
 app.use(express.json());
 app.use(cors());
@@ -14,9 +14,9 @@ app.get("/test", (req, res) => {
   });
 });
 
-const productRoutes = require("../routes/productRoute");
-const uploadImgRoutes = require("../routes/uploadImage");
-const authRoutes = require("../routes/authRoute");
+const productRoutes = require("./routes/productRoute");
+const uploadImgRoutes = require("./routes/uploadImage");
+const authRoutes = require("./routes/authRoute");
 
 app.use("/api/product", productRoutes);
 app.use("/api/cloudinary", uploadImgRoutes);
